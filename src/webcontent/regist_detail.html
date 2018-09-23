@@ -4,29 +4,49 @@
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+		<!-- スマートフォン対応 -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
 
+		<!-- page title -->
 		<title>Regist Detail : Life Point System</title>
 
 		<!--third party style sheet -->
-		<link type="text/css" rel="stylesheet" href="css/external/material.min.css">
+		<link type="text/css" rel="stylesheet" href="css/external/bootstrap.min.css">
 
 		<!-- original style sheet -->
 		<link type="text/css" rel="stylesheet" href="css/regist_detail.css">
 
 		<!-- third party javascript -->
 		<script type="text/javascript" src="js/external/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/external/material.min.js"></script>
+		<script type="text/javascript" src="js/external/bootstrap.min.js"></script>
 
 		<!-- original javascript -->
 		<script type="text/javascript" src="js/regist_detail.js"></script>
 
 	</head>
 	<body class="body_root">
-		<!-- main frame -->
-		<div style="text-align:center; position:relative; top:20px;">
-			<!-- smaple button -->
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="btnSampleClicked()">BUTTON</button>
-		</div>
+		<!-- メインフレーム -->
+		<div class="container" style="position:relative; top:30px;"><div class="row justify-content-md-center"><div class="col-md-auto">
+			<!-- フレーム内コンテンツ 始 -->
+			<table>
+				<tr>
+					<td class="input_item input_item_key"><h5>日付</h5></td>
+					<td class="input_item input_item_value">
+						<h5>
+							<button type="button" class="btn btn-info btn-sm"><<</button>
+							<span style="position:relative; left:20px; right:20px;"></span>
+								2018/9/23
+							</span>
+							<button type="button" class="btn btn-info btn-sm">>></button>
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td class="input_item input_item_key"><h5>ジャンル</h5></td>
+					<td class="input_item input_item_value"><h5>食費</h5></td>
+				</tr>
+			</table>
+			<!-- フレーム内コンテンツ 至 -->
+		</div></div></div>
 	</body>
 </html>

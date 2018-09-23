@@ -2,3 +2,15 @@
  *  regist_detail.css
  */
 
+td.input_item {
+    padding:10px;
+}
+
+td.input_item_key {
+    text-align:left;
+}
+
+td.input_item_value {
+    text-align:center;
+}
+
