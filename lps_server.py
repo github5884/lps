@@ -25,7 +25,7 @@ def main():
     flask_port = args[1]
 
     # サーバ始動
-    flask_obj.run(port=flask_port)
+    flask_obj.run(debug=False, host='0.0.0.0', port=flask_port)
 
 # エントリポイント
 if __name__ == "__main__":
