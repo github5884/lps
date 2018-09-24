@@ -7,9 +7,9 @@ var DAY_EXP_ARRAY = ['(SUN)', '(MON)', '(TUE)', '(WED)', '(THU)', '(FRI)', '(SAT
 // 曜日配色
 var DAY_COLOR_ARRAY = ['#ff0000', '#000000', '#000000', '#000000', '#000000', '#000000', '#0000ff'];
 
-// ドロップダウンのベースID
+// ドロップダウンのベースID(項目のインデックスと連動)
 var DROPDOWN_BASE_IDS = ['Category', 'Location'];
-// ドロップダウン項目
+// ドロップダウン項目(ベースIDのインデックスと連動)
 var dropdownItems = [ 
     ['食費', '外食', '交通費'],
     ['スギ薬局', '近商', 'ライフ', 'イオン']
@@ -22,6 +22,9 @@ var currentDate = new Date();
   * ページロード処理
   */
 function pageOnLoad() {
+    // 入力項目のテーブルサイズを固定
+    
+
     // 日付を初期化し表示
     currentDate = new Date();
     showDate(currentDate);

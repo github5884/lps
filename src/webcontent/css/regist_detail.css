@@ -14,3 +14,11 @@ td.input_item_value {
     text-align:center;
 }
 
+td.button_group {
+    padding: 0px 20px;
+}
+
+hr.regist_detail {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

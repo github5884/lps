@@ -27,12 +27,12 @@
 	</head>
 	<body class="body_root" onload="pageOnLoad()">
 		<!-- メインフレーム -->
-		<div class="container" style="position:relative; top:30px;"><div class="row justify-content-md-center"><div class="col-md-auto">
+		<div class="container" style="position:relative; top:30px;"><div class="row justify-content-md-center"><div class="col-md-auto" style="text-align:center">
 			<!-- フレーム内コンテンツ 始 -->
 
 			<!-- タイトル -->
-			<h5 style="position: relative; left:10px;">明細を登録</h5>
-			<hr>
+			<h5>明細を登録</h5>
+			<hr class="regist_detail">
 
 			<!-- 入力項目テーブル -->
 			<table>
@@ -69,7 +69,39 @@
 						<div id="dropdownLocation" class="dropdown-menu" aria-labelledby="txtLocation"></div>
 					</td>
 				</tr>
+				<!-- 金額入力 -->
+				<tr>
+					<td class="input_item input_item_key"><h6>金額</h6></td>
+					<td class="input_item input_item_value">
+						<input id="txtPrice" type="number" class="form-control" style="text-align:right;" value="0">
+					</td>
+				</tr>
+				<!-- 財布 -->
+				<tr>
+					<td class="input_item input_item_key"><h6>財布</h6></td>
+					<td class="input_item input_item_value">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-success active">
+								<input type="radio" name="options" autocomplete="off" checked>立替
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="options" autocomplete="off" checked>家庭
+							</label>
+						</div>
+					</td>
+				</tr>
 			</table>
+
+			<hr class="regist_detail">
+
+			<!-- 登録ボタングループ -->
+			<div>
+				<a href="#" class="btn btn-info">登録</a>
+				<a href="#" class="btn btn-secondary" style="margin-left:20px;">キャンセル</a>
+			</div>
+			
+			
+
 
 			<!-- フレーム内コンテンツ 至 -->
 		</div></div></div>
