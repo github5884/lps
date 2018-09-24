@@ -40,15 +40,14 @@
 				<tr>
 					<td class="input_item input_item_key"><h6>日付</h6></td>
 					<td class="input_item input_item_value">
-						<h5>
+						<h5><span id="lblDate"></span></h5>
+						<!-- 日付移動ボタングループ -->
+						<div>
 							<!-- 1日前 -->
-							<a href="#" class="btn btn-info btn-sm" onclick="changeDate(-1)"><<</a>
-							<span>&nbsp</span>
-							<span id="lblDate"></span>
-							<span>&nbsp</span>
+                                                        <a href="#" class="btn btn-info btn-sm" onclick="changeDate(-1)"><<</a>
 							<!-- 1日後 -->
-							<a href="#" class="btn btn-info btn-sm" onclick="changeDate(1)">>></a>
-						</h5>
+                                                        <a href="#" class="btn btn-info btn-sm" style="margin-left:60px;" onclick="changeDate(1)">>></a>
+						</div>
 					</td>
 				</tr>
 				<!-- カテゴリ選択-->
