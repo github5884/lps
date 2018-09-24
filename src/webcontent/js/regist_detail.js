@@ -7,6 +7,13 @@ var DAY_EXP_ARRAY = ['(SUN)', '(MON)', '(TUE)', '(WED)', '(THU)', '(FRI)', '(SAT
 // 曜日配色
 var DAY_COLOR_ARRAY = ['#ff0000', '#000000', '#000000', '#000000', '#000000', '#000000', '#0000ff'];
 
+// ドロップダウンのベースID
+var DROPDOWN_BASE_IDS = ['Category', 'Location'];
+// ドロップダウン項目
+var dropdownItems = [ 
+    ['食費', '外食', '交通費'],
+    ['スギ薬局', '近商', 'ライフ', 'イオン']
+];
 
 // 日付を初期化
 var currentDate = new Date();
@@ -19,11 +26,10 @@ function pageOnLoad() {
     currentDate = new Date();
     showDate(currentDate);
 
-    // カテゴリのドロップダウン項目をセット
-    setDropdownItems('dropdownCategory', ['食費', '外食', '交通費']);
-
-    // 場所のドロップダウン項目をセット
-    setDropdownItems('dropdownLocation', ['スギ薬局', '近商', 'ライフ', 'イオン']);
+    // 各ドロップダウン項目をセット
+    for (var i = 0; i < DROPDOWN_BASE_IDS.length; i++) {
+        setDropdownItems(i);
+    }
 }
 
 /**
@@ -51,18 +57,26 @@ function changeDate(changeNum) {
 
 /**
  * ドロップダウン項目をセット
- * @param targetId      対象ID
- * @param items         項目リスト(array)
+ * @param targetIndex   対象インデックス
  */
-function setDropdownItems(targetId, items) {
-    console.log(items);
+function setDropdownItems(targetIndex) {
     // 一旦、項目をすべて削除
-    $('#' + targetId).empty();
+    $('#dropdown' + DROPDOWN_BASE_IDS[targetIndex]).empty();
 
     // 各項目に対して処理
-    for (var i = 0; i < items.length; i++) {
-        $('#' + targetId).append($('<a>').attr({class: 'dropdown-item', href: '#'}).text(items[i]));
+    for (var i = 0; i < dropdownItems[targetIndex].length; i++) {
+        $('#dropdown' + DROPDOWN_BASE_IDS[targetIndex]).append($('<a>').attr({class: 'dropdown-item', href: '#', onclick: 'dropdownItemClicked(' + targetIndex + ',' + i + ')'}).text(dropdownItems[targetIndex][i]));
     }
+}
+
+/**
+ * ドロップダウン項目選択時処理
+ * @param targetIndex       対象インデックス
+ * @param selectedItemIndex   選択項目インデックス
+ */
+function dropdownItemClicked(targetIndex, selectedItemIndex) {
+    // 入力欄に反映
+    $('#txt' + DROPDOWN_BASE_IDS[targetIndex]).val(dropdownItems[targetIndex][selectedItemIndex]);
 }
 
  /**
