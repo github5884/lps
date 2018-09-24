@@ -18,36 +18,66 @@
 
 		<!-- third party javascript -->
 		<script type="text/javascript" src="js/external/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/external/popper.min.js"></script>
 		<script type="text/javascript" src="js/external/bootstrap.min.js"></script>
 
 		<!-- original javascript -->
 		<script type="text/javascript" src="js/regist_detail.js"></script>
 
 	</head>
-	<body class="body_root">
+	<body class="body_root" onload="pageOnLoad()">
 		<!-- メインフレーム -->
 		<div class="container" style="position:relative; top:30px;"><div class="row justify-content-md-center"><div class="col-md-auto">
 			<!-- フレーム内コンテンツ 始 -->
+
+			<!-- タイトル -->
+			<h5 style="position: relative; left:10px;">明細を登録</h5>
+			<hr>
+
+			<!-- 入力項目テーブル -->
 			<table>
+				<!-- 日付選択 -->
 				<tr>
-					<td class="input_item input_item_key"><h5>日付</h5></td>
+					<td class="input_item input_item_key"><h6>日付</h6></td>
 					<td class="input_item input_item_value">
 						<h5>
-							<a href="" class="btn btn-info btn-sm"><<</a>
+							<!-- 1日前 -->
+							<a href="#" class="btn btn-info btn-sm" onclick="changeDate(-1)"><<</a>
 							<span>&nbsp</span>
-							<span>2018/9/23</span>
+							<span id="lblDate"></span>
 							<span>&nbsp</span>
-							<a href="" type="button" class="btn btn-info btn-sm">>></a>
+							<!-- 1日後 -->
+							<a href="#" class="btn btn-info btn-sm" onclick="changeDate(1)">>></a>
 						</h5>
 					</td>
 				</tr>
+				<!-- カテゴリ選択-->
 				<tr>
-					<td class="input_item input_item_key"><h5>ジャンル</h5></td>
+					<td class="input_item input_item_key"><h6>カテゴリ</h6></td>
 					<td class="input_item input_item_value">
-						<input type="text" class="form-control" placeholder="category name">
+						<input id="txtCategory" type="text" role="button" class="form-control dropdown-toggle"  placeholder="カテゴリ名" data-toggle="dropdown" aria-expanded="false">
+						<!-- ドロップダウンメニュー -->
+						<div id="dropdownCategory" class="dropdown-menu" aria-labelledby="txtCategory">
+							<a class="dropdown-item" href="#">食費</a>
+							<a class="dropdown-item" href="#">外食</a>
+							<a class="dropdown-item" href="#">交通費</a>
+						</div>
+					</td>
+				</tr>
+				<!-- 場所選択 -->
+				<tr>
+					<td class="input_item input_item_key"><h6>場所</h6></td>
+					<td class="input_item input_item_value">
+						<input id="txtLocation" type="text" role="button" class="form-control dropdown-toggle"  placeholder="場所名" data-toggle="dropdown" aria-expanded="false">
+						<!-- ドロップダウンメニュー -->
+						<div id="dropdownLocation" class="dropdown-menu" aria-labelledby="txtLocation">
+							<a class="dropdown-item" href="#">スギ薬局</a>
+							<a class="dropdown-item" href="#">近商</a>
+						</div>
 					</td>
 				</tr>
 			</table>
+
 			<!-- フレーム内コンテンツ 至 -->
 		</div></div></div>
 	</body>
