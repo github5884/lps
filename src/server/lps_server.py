@@ -1,16 +1,31 @@
 # coding: utf-8
 
 import sys
-from flask import Flask
+from flask import Flask, request, jsonify
+import regist_detail
 
 # flask object
 flask_obj = Flask(__name__)
+flask_obj.config['JSON_AS_ASCII'] = False   # 文字化け対策
 
 # インデックスページ
 @flask_obj.route("/")
 def index_page():
     return "lps index page"
 
+# カテゴリ項目取得
+@flask_obj.route("/get_category_items")
+def get_category_items_access():
+    category_items = regist_detail.get_category_items()
+    return jsonify({'items': category_items})
+
+# 明細登録
+@flask_obj.route("/regist_detail", methods=['POST'])
+def regist_detail_access():
+    if (request.methods == 'POST'):
+        value = request.form['key']
+    else:
+        print('do not support GET access.')
 
 # メイン関数
 def main():
