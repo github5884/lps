@@ -22,12 +22,12 @@ var currentDate = new Date();
   * ページロード処理
   */
 function pageOnLoad() {
-    // 入力項目のテーブルサイズを固定
-    
-
     // 日付を初期化し表示
     currentDate = new Date();
     showDate(currentDate);
+
+    // カテゴリ項目を取得
+    getCategoryItems()
 
     // 各ドロップダウン項目をセット
     for (var i = 0; i < DROPDOWN_BASE_IDS.length; i++) {
@@ -56,6 +56,28 @@ function changeDate(changeNum) {
     currentDate.setDate(currentDay + changeNum);
     // 表示
     showDate(currentDate);
+}
+
+/**
+ * カテゴリ項目を取得
+ */
+function getCategoryItems() {
+    $.ajax({
+        url: 'http://127.0.0.1:8888/get_category_items',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        crossDomain: true,
+        cache: false
+    })
+    .done( (data) => {
+        console.log(data)
+        dropdownItems[0] = data.items
+    })
+    .fail( (data) => {
+        console.log("ajax failed.")
+        console.log(data)
+    })
 }
 
 /**

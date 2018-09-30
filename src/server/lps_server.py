@@ -2,11 +2,16 @@
 
 import sys
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import regist_detail
 
-# flask object
+# flaskオブジェクト
 flask_obj = Flask(__name__)
-flask_obj.config['JSON_AS_ASCII'] = False   # 文字化け対策
+# 文字化け対策
+flask_obj.config['JSON_AS_ASCII'] = False
+# クロスドメイン設定
+cors = CORS(flask_obj, resources={r"/get_category_items": {"origins": "*"}})
+
 
 # インデックスページ
 @flask_obj.route("/")
