@@ -37,7 +37,10 @@ class DbAccess:
 
     # UPDATEクエリを実行
     # @param update_query   UPDATEクエリ
+    # @return               true=OK, false=NG
     def exec_update_query(self, update_query):
+        ret = True
+
         # DB接続
         db_conn = sqlite3.connect(self._dbpath)
         cursor = db_conn.cursor()
@@ -45,14 +48,17 @@ class DbAccess:
         try:
             # UPDATEクエリ実行
             cursor.execute(update_query)
+
+            # コミット
+            db_conn.commit()
         except sqlite3.Error as e:
             print("sqlite3 access error : " + e.args[0])
-        
-        # コミット
-        db_conn.commit()
+            ret = False
 
         # DBから切断
         db_conn.close()
+
+        return ret
 
 
 # メイン関数

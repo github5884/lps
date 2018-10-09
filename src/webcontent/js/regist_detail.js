@@ -71,12 +71,50 @@ function getCategoryItems() {
         cache: false
     })
     .done( (data) => {
-        console.log(data)
-        dropdownItems[0] = data.items
+        dropdownItems[0] = data.items;
     })
     .fail( (data) => {
-        console.log("ajax failed.")
-        console.log(data)
+        console.log("ajax failed.");
+        console.log(data);
+    })
+}
+
+/**
+ * 明細を挿入
+ */
+function insertDetail() {
+    var detailJson = {};
+
+    // 年月日の表記を取得
+    detailJson.dateText = currentDate.getFullYear() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getDate();
+    // カテゴリを取得
+    detailJson.category = $('#txtCategory').val();
+    // 場所を取得
+    detailJson.location = $('#txtLocation').val();
+    // 金額を取得
+    detailJson.cost = parseInt($('#txtPrice').val(), 0);
+    // 財布を取得(仮)
+    detailJson.purchase = 0;
+    
+    console.log(detailJson);
+
+    $.ajax({
+        url: 'http://127.0.0.1:8888/insert_detail',
+        type: 'post',
+        data: JSON.stringify(detailJson),
+        contentType: 'application/JSON',
+        dataType: 'JSON',
+        scriptCharset: 'utf-8',
+        async: false,
+        crossDomain: true,
+        cache: false
+    })
+    .done( (data) => {
+        console.log(data);
+    })
+    .fail( (data) => {
+        console.log("ajax failed.");
+        console.log(data);
     })
 }
 

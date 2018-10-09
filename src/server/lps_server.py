@@ -10,7 +10,7 @@ flask_obj = Flask(__name__)
 # 文字化け対策
 flask_obj.config['JSON_AS_ASCII'] = False
 # クロスドメイン設定
-cors = CORS(flask_obj, resources={r"/get_category_items": {"origins": "*"}})
+cors = CORS(flask_obj, resources={r"/*": {"origins": "*"}})
 
 
 # インデックスページ
@@ -24,13 +24,15 @@ def get_category_items_access():
     category_items = regist_detail.get_category_items()
     return jsonify({'items': category_items})
 
-# 明細登録
-@flask_obj.route("/regist_detail", methods=['POST'])
-def regist_detail_access():
-    if (request.methods == 'POST'):
-        value = request.form['key']
-    else:
-        print('do not support GET access.')
+# 明細を挿入
+@flask_obj.route("/insert_detail", methods=['POST'])
+def insert_detail_access():
+    detail_json = request.json
+    print(detail_json)
+
+    regist_detail.insert_detail(detail_json)
+
+    return jsonify(detail_json)
 
 # メイン関数
 def main():
